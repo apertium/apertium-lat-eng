@@ -16,4 +16,19 @@
 /apertium-lat-eng.lat-eng.t3x -text
 /autogen.sh -text
 /configure.ac -text
+dev/apertium-eng/AUTHORS -text
+dev/apertium-eng/COPYING -text
+dev/apertium-eng/ChangeLog -text
+dev/apertium-eng/Makefile.am -text
+dev/apertium-eng/NEWS -text
+dev/apertium-eng/README -text
+dev/apertium-eng/apertium-eng.eng.acx -text
+dev/apertium-eng/apertium-eng.eng.dix -text
+dev/apertium-eng/apertium-eng.eng.rlx -text
+dev/apertium-eng/apertium-eng.pc.in -text
+dev/apertium-eng/apertium-eng.post-eng.dix -text
+dev/apertium-eng/autogen.sh -text
+dev/apertium-eng/configure.ac -text
+dev/apertium-eng/eng.prob -text svneol=unset#unset
+dev/apertium-eng/modes.xml -text
 /modes.xml -text

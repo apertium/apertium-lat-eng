@@ -21,6 +21,9 @@
       <cat-item tags="vblex.*"/>
       <cat-item tags="vbmod.*"/>
       <cat-item tags="vbser.*"/>
+    </def-cat>      
+    <def-cat n="adv">
+      <cat-item tags="adv.*"/>
     </def-cat>
   </section-def-cats>
 
@@ -42,6 +45,7 @@
       <attr-item tags="np"/>
       <attr-item tags="num"/>
       <attr-item tags="vblex"/>
+      <attr-item tags="adv"/>
     </def-attr>
         
     <def-attr n="tense">
@@ -96,7 +100,7 @@
   </section-def-macros>
 
   <section-rules>
-    <rule comment="RULE: Remove gender for nouns">
+    <rule comment="RULE: Remove gender and case for nouns">
       <pattern>
         <pattern-item n="nom"/>
       </pattern>
@@ -116,7 +120,7 @@
       </action>
     </rule>
       
-    <rule comment="RULE: Remove gender for adjectives">
+    <rule comment="RULE: Remove gender and case for adjectives">
       <pattern>
         <pattern-item n="adj"/>
       </pattern>
@@ -180,10 +184,10 @@
     </rule>
       
     <rule comment="RULE: Conjugate present indicative verbs">
-   <pattern>
-     <pattern-item n="vrb"/>
-   </pattern>
-   <action>
+     <pattern>
+        <pattern-item n="vrb"/>
+     </pattern>
+     <action>
        <choose>
         <when>
             <test>
@@ -212,6 +216,28 @@
      </out>
    </action>
 </rule>
+      
+    <rule comment="RULE: Remove 'sint' tag for adverbs">
+      <pattern>
+        <pattern-item n="adv"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+      
+      
   </section-rules>
 </transfer>
 

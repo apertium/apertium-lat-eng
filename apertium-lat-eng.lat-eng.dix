@@ -7,6 +7,7 @@
      <sdef n="np"/>
      <sdef n="adj"/>
      <sdef n="num"/>
+     <sdef n="adv"/>
 
 
      <sdef n="vblex"/>
@@ -167,7 +168,8 @@
       
     <e><p><l>unus<s n="num"/></l><r>one<s n="num"/></r></p></e>
       
-    
+    <e><p><l>clare<s n="adv"/></l><r>clearly<s n="adv"/></r></p></e>
+
     <e><p><l>ire<s n="vblex"/></l><r>go<s n="vblex"/></r></p></e>
 
 

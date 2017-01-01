@@ -49,7 +49,7 @@
     </def-attr>
         
     <def-attr n="tense">
-      <attr-item tags=" pres"/>
+      <attr-item tags="pres"/>
       <attr-item tags="pret"/>
       <attr-item tags="past"/>
       <attr-item tags="imp"/>
@@ -75,6 +75,11 @@
       <attr-item tags="itg"/>
       <attr-item tags="neg"/> 
      </def-attr>
+      
+     <def-attr n="degree">
+      <attr-item tags="comp"/>
+      <attr-item tags="sup"/>
+     </def-attr>     
        
     <def-attr n="gender">
         <attr-item tags="m"/>
@@ -84,11 +89,10 @@
 
   </section-def-attrs>
 
-<!--
-  <section-def-vars>
-    <def-var n="number"/>
-  </section-def-vars>
--->
+
+    <section-def-vars>
+        <def-var n="comparison"/>
+    </section-def-vars>
 
   <section-def-macros>
     <def-macro n="test" npar="1">
@@ -216,25 +220,61 @@
      </out>
    </action>
 </rule>
-      
-    <rule comment="RULE: Remove 'sint' tag for adverbs">
-      <pattern>
+            
+    <rule comment="RULE: Translate adverbs">
+     <pattern>
         <pattern-item n="adv"/>
-      </pattern>
-      <action>
-        <out>
-          <chunk name="n">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lem"/>
-              <clip pos="1" side="tl" part="word_type"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
+     </pattern>
+     <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="degree"/>
+                  <lit-tag v="comp"/>
+                </equal>
+            </test>
+            <let>
+              <var n="comparison"/>
+              <concat>
+              <lit v="more"/>
+              <lit-tag v="preadv"/>
+              <lit v="$ "/>
+              </concat>
+            </let>
+        </when>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="degree"/>
+                  <lit-tag v="sup"/>
+                </equal>
+            </test>
+            <let>
+              <var n="comparison"/>
+              <concat>
+              <lit v="most"/>
+              <lit-tag v="preadv"/>
+              <lit v="$ "/>
+              </concat>
+
+            </let>
+        </when>         
+      </choose>
+     <out>
+       <chunk name="n">
+       <tags>
+         <tag><lit-tag v="SN"/></tag>
+       </tags>
+       <lu>
+         <var n="comparison"/>
+         <clip pos="1" side="tl" part="lem"/>
+         <clip pos="1" side="tl" part="word_type"/>
+       </lu>
+         </chunk>
+     </out>
+   </action>
+  </rule>
       
       
       

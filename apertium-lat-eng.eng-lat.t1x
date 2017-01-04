@@ -23,7 +23,8 @@
       <cat-item tags="vbser.*"/>
     </def-cat>      
     <def-cat n="adv">
-      <cat-item tags="adv.*"/>
+      <cat-item tags="adv"/>
+      <cat-item tags="adv*"/>
     </def-cat>
     <def-cat n="prn">
       <cat-item tags="prn.*"/>
@@ -37,12 +38,15 @@
     <def-attr n="number">
       <attr-item tags="sg"/>
       <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
+       
     </def-attr>
       
     <def-attr n="gloss">
       <attr-item tags="ant"/>
       <attr-item tags="top"/>
       <attr-item tags="sint"/>
+      <attr-item tags="qnt"/>
     </def-attr>
       
     <def-attr n="word_type">
@@ -53,6 +57,7 @@
       <attr-item tags="vblex"/>
       <attr-item tags="adv"/>
       <attr-item tags="prn"/>
+      <attr-item tags="det"/>
     </def-attr>
         
     <def-attr n="tense">
@@ -114,11 +119,10 @@
 
   </section-def-attrs>
 
-<!---->
-<!--  <section-def-vars>-->
-<!--    <def-var n="number"/>-->
-<!--  </section-def-vars>-->
-<!---->
+    <section-def-vars>
+        <def-var n="comparison"/>
+    </section-def-vars>
+    
   <section-def-macros>
     <def-macro n="test" npar="1">
           <let>
@@ -127,6 +131,7 @@
           </let>
     </def-macro>
   </section-def-macros>
+
 
   <section-rules>
     <rule comment="RULE: Translate degrees of adverbs">
@@ -144,7 +149,7 @@
                 </equal>
             </test>
             <let>
-              <clip pos="1" side="tl" part="degree"/>
+              <var n="comparison"/>
               <lit-tag v="comp"/>
             </let>
         </when>
@@ -156,7 +161,7 @@
                 </equal>
             </test>
             <let>
-              <clip pos="1" side="tl" part="degree"/>
+              <var n="comparison"/>
               <lit-tag v="sup"/>
             </let>
         </when>         
@@ -167,15 +172,16 @@
               <tag><lit-tag v="SN"/></tag>
             </tags>
             <lu>
-              <clip pos="1" side="tl" part="lem"/>
-              <clip pos="1" side="tl" part="word_type"/>
-              <lit-tag v="sint"/>
-              <clip pos="1" side="tl" part="degree"/>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <lit-tag v="sint"/>               
+              <var n="comparison"/>
             </lu>
           </chunk>
         </out>
       </action>
-    </rule>
+    </rule> 
+
       
     <rule comment="RULE: Translate adverbs">
       <pattern>
@@ -183,7 +189,7 @@
       </pattern>
       <action>
         <out>
-          <chunk name="n">
+          <chunk name="adv">
             <tags>
               <tag><lit-tag v="SN"/></tag>
             </tags>
@@ -191,6 +197,7 @@
               <clip pos="1" side="tl" part="lem"/>
               <clip pos="1" side="tl" part="word_type"/>
               <lit-tag v="sint"/>               
+
             </lu>
           </chunk>
         </out>
@@ -234,6 +241,7 @@
         </out>
       </action>
     </rule>
+      
 
   </section-rules>
 </transfer>

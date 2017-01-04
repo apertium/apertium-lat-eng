@@ -196,40 +196,6 @@
         </out>
       </action>
     </rule>
- 
-    <rule comment="RULE: Conjugate present indicative verbs">
-     <pattern>
-        <pattern-item n="vrb"/>
-     </pattern>
-     <action>
-       <choose>
-        <when>
-            <test>
-               <equal>
-                  <clip pos="1" side="sl" part="tense"/>
-                  <lit-tag v="pri"/>
-                </equal>
-            </test>
-            <let>
-              <clip pos="1" side="tl" part="tense"/>
-              <lit-tag v="pres"/>
-            </let>
-          </when>
-       </choose>
-     <out>
-       <chunk name="vb">
-       <tags>
-         <tag><lit-tag v="SN"/></tag>
-       </tags>
-       <lu>
-         <clip pos="1" side="tl" part="lem"/>
-         <clip pos="1" side="tl" part="word_type"/>
-         <clip pos="1" side="tl" part="tense"/>
-       </lu>
-         </chunk>
-     </out>
-   </action>
-</rule>
       
     <rule comment="RULE: Conjugate genitive nouns">
      <pattern>

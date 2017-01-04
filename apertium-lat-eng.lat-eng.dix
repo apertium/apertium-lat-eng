@@ -8,7 +8,8 @@
      <sdef n="adj"/>
      <sdef n="num"/>
      <sdef n="adv"/>
-
+     <sdef n="prn"/>
+     <sdef n="det"/>
 
      <sdef n="vblex"/>
      <sdef n="vaux"/>
@@ -159,22 +160,43 @@
     <e><p><l>cerebellum<s n="n"/><s n="nt"/></l><r>cerebellum<s n="n"/></r></p></e>
     <e><p><l>theatrum<s n="n"/><s n="nt"/></l><r>theatre<s n="n"/></r></p></e>
     <e><p><l>amphitheatrum<s n="n"/><s n="nt"/></l><r>amphitheatre<s n="n"/></r></p></e>
+      
+    <!-- SECTION: Proper Nouns -->
 
     <e><p><l>Iulius<s n="np"/><s n="ant"/></l><r>Julius<s n="np"/><s n="ant"/></r></p></e>
     <e><p><l>Brutus<s n="np"/><s n="ant"/></l><r>Brutus<s n="np"/><s n="ant"/></r></p></e>
       
+    <!-- SECTION: Adjectives -->
       
     <e><p><l>altus<s n="adj"/></l><r>tall<s n="adj"/></r></p></e>
-      
+
+    <!-- SECTION: Numerals -->
+
     <e><p><l>unus<s n="num"/></l><r>one<s n="num"/></r></p></e>
-      
+
+    <!-- SECTION: Adverbs -->
+
     <e><p><l>clare<s n="adv"/></l><r>clearly<s n="adv"/></r></p></e>
+    <e><p><l>abhinc<s n="adv"/></l><r>since<s n="adv"/></r></p></e>
+
+    <!-- SECTION: Verbs -->
 
     <e><p><l>ire<s n="vblex"/></l><r>go<s n="vblex"/></r></p></e>
+    <e><p><l>amare<s n="vblex"/></l><r>love<s n="vblex"/></r></p></e>
+ 
+    <!-- SECTION: Prepositions -->
       
     <e><p><l>adversus<s n="pr"/></l><r>against<s n="pr"/></r></p></e>
 
+    <!-- SECTION: Pronouns -->
 
+    <e><p><l>ego<s n="prn"/></l><r>I<s n="prn"/></r></p></e>
+      
+    <!-- SECTION: Determiners -->
+
+    <e><p><l>magis<s n="det"/></l><r>more<s n="det"/></r></p></e>
+    <e><p><l>maxime<s n="det"/></l><r>most<s n="det"/></r></p></e>
+    <e><p><l>hic<s n="det"/></l><r>this<s n="det"/></r></p></e>
 
   </section>
 </dictionary>

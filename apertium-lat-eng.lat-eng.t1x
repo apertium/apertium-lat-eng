@@ -25,6 +25,12 @@
     <def-cat n="adv">
       <cat-item tags="adv.*"/>
     </def-cat>
+    <def-cat n="prn">
+      <cat-item tags="prn.*"/>
+    </def-cat>
+    <def-cat n="det">
+      <cat-item tags="det.*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -46,6 +52,8 @@
       <attr-item tags="num"/>
       <attr-item tags="vblex"/>
       <attr-item tags="adv"/>
+      <attr-item tags="prn"/>
+      <attr-item tags="det"/>
     </def-attr>
         
     <def-attr n="tense">
@@ -75,6 +83,12 @@
       <attr-item tags="itg"/>
       <attr-item tags="neg"/> 
      </def-attr>
+      
+     <def-attr n="person">
+      <attr-item tags="p1"/>
+      <attr-item tags="p2"/>
+      <attr-item tags="p3"/>
+     </def-attr>  
       
      <def-attr n="degree">
       <attr-item tags="comp"/>
@@ -275,6 +289,50 @@
      </out>
    </action>
   </rule>
+      
+    <rule comment="RULE: Translate pronouns">
+      <pattern>
+        <pattern-item n="prn"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <lit-tag v="pers"/>               
+              <clip pos="1" side="tl" part="person"/>
+              <clip pos="1" side="tl" part="gender"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Translate determiners">
+      <pattern>
+        <pattern-item n="det"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <lit-tag v="dem"/>               
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
       
       
       

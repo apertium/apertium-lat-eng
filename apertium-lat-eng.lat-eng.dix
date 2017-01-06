@@ -10,8 +10,11 @@
      <sdef n="adv"/>
      <sdef n="prn"/>
      <sdef n="det"/>
+     <sdef n="cnjcoo"/>
+     <sdef n="cnjsub"/>
 
      <sdef n="vblex"/>
+     <sdef n="vbser"/>
      <sdef n="vaux"/>
      <sdef n="vbmod"/>
 
@@ -165,6 +168,7 @@
 
     <e><p><l>Iulius<s n="np"/><s n="ant"/></l><r>Julius<s n="np"/><s n="ant"/></r></p></e>
     <e><p><l>Brutus<s n="np"/><s n="ant"/></l><r>Brutus<s n="np"/><s n="ant"/></r></p></e>
+    <e><p><l>Roma<s n="np"/><s n="f"/></l><r>Rome<s n="np"/></r></p></e>
       
     <!-- SECTION: Adjectives -->
       
@@ -183,20 +187,33 @@
 
     <e><p><l>ire<s n="vblex"/></l><r>go<s n="vblex"/></r></p></e>
     <e><p><l>amare<s n="vblex"/></l><r>love<s n="vblex"/></r></p></e>
- 
+    <e><p><l>esse<s n="vbser"/></l><r>be<s n="vbser"/></r></p></e>
+
     <!-- SECTION: Prepositions -->
       
     <e><p><l>adversus<s n="pr"/></l><r>against<s n="pr"/></r></p></e>
+    <e><p><l>in<s n="pr"/></l><r>to<s n="pr"/></r></p></e>
+    <e><p><l>in<s n="pr"/></l><r>in<s n="pr"/></r></p></e>
+    <e><p><l>pro<s n="pr"/></l><r>for<s n="pr"/></r></p></e>
+    <e><p><l>per<s n="pr"/></l><r>by<s n="pr"/></r></p></e>
+    <e><p><l>a<s n="pr"/></l><r>from<s n="pr"/></r></p></e>
+    <e><p><l>cum<s n="pr"/></l><r>with<s n="pr"/></r></p></e>
 
     <!-- SECTION: Pronouns -->
 
     <e><p><l>ego<s n="prn"/></l><r>I<s n="prn"/></r></p></e>
+    <e><p><l>ille<s n="prn"/></l><r>he<s n="prn"/></r></p></e>
       
     <!-- SECTION: Determiners -->
 
     <e><p><l>magis<s n="det"/></l><r>more<s n="det"/></r></p></e>
     <e><p><l>maxime<s n="det"/></l><r>most<s n="det"/></r></p></e>
     <e><p><l>hic<s n="det"/></l><r>this<s n="det"/></r></p></e>
+      
+    <!-- SECTION: Conjunctions -->
+
+    <e><p><l>antequam<s n="cnjcoo"/></l><r>before<s n="cnjsub"/></r></p></e>
+
 
   </section>
 </dictionary>

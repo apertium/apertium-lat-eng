@@ -20,6 +20,8 @@
     <def-cat n="vrb">
       <cat-item tags="vblex.*"/>
       <cat-item tags="vbmod.*"/>
+    </def-cat>      
+    <def-cat n="vbser">
       <cat-item tags="vbser.*"/>
     </def-cat>      
     <def-cat n="adv">
@@ -37,12 +39,16 @@
     <def-attr n="number">
       <attr-item tags="sg"/>
       <attr-item tags="pl"/>
+      <attr-item tags="sp"/>
     </def-attr>
       
     <def-attr n="gloss">
       <attr-item tags="ant"/>
       <attr-item tags="top"/>
       <attr-item tags="sint"/>
+      <attr-item tags="dem"/>
+      <attr-item tags="qnt"/>
+
     </def-attr>
       
     <def-attr n="word_type">
@@ -51,6 +57,7 @@
       <attr-item tags="np"/>
       <attr-item tags="num"/>
       <attr-item tags="vblex"/>
+      <attr-item tags="vbser"/>
       <attr-item tags="adv"/>
       <attr-item tags="prn"/>
       <attr-item tags="det"/>
@@ -118,6 +125,57 @@
   </section-def-macros>
 
   <section-rules>
+      
+    <rule comment="RULE: Rearrange word order">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="adj"/>
+        <pattern-item n="vbser"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="3" side="sl" part="tense"/>
+                  <lit-tag v="pri"/>
+                </equal>
+            </test>
+            <let>
+                  <clip pos="3" side="tl" part="tense"/>
+                  <lit-tag v="pres"/>
+            </let>
+        </when>         
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="3" side="tl" part="lem"/>
+              <clip pos="3" side="tl" part="word_type"/>
+              <clip pos="3" side="tl" part="tense"/>
+              <clip pos="3" side="tl" part="person"/>
+              <clip pos="3" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <lit-tag v="sint"></lit-tag>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
     <rule comment="RULE: Remove gender and case for nouns">
       <pattern>
         <pattern-item n="nom"/>
@@ -326,7 +384,43 @@
             <lu>
               <clip pos="1" side="tl" part="lem"/>
               <clip pos="1" side="tl" part="word_type"/>
-              <lit-tag v="dem"/>               
+              <clip pos="1" side="tl" part="gloss"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Translate 'to be' verbs">
+      <pattern>
+        <pattern-item n="vbser"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="tense"/>
+                  <lit-tag v="pri"/>
+                </equal>
+            </test>
+            <let>
+                  <clip pos="1" side="tl" part="tense"/>
+                  <lit-tag v="pres"/>
+            </let>
+        </when>         
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="tense"/>
+              <clip pos="1" side="tl" part="person"/>
               <clip pos="1" side="tl" part="number"/>
             </lu>
           </chunk>

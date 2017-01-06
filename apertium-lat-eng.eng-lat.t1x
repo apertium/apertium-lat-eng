@@ -24,13 +24,17 @@
     </def-cat>      
     <def-cat n="adv">
       <cat-item tags="adv"/>
-      <cat-item tags="adv*"/>
+      <cat-item tags="adv.*"/>
     </def-cat>
     <def-cat n="prn">
       <cat-item tags="prn.*"/>
     </def-cat>
     <def-cat n="det">
       <cat-item tags="det.*"/>
+    </def-cat>
+    <def-cat n="pr">
+      <cat-item tags="pr.*"/>
+      <cat-item tags="pr"/>
     </def-cat>
   </section-def-cats>
 
@@ -121,6 +125,9 @@
 
     <section-def-vars>
         <def-var n="comparison"/>
+        <def-var n="dative"/>      
+        <def-var n="locative"/>   
+        <def-var n="gend"/>      
     </section-def-vars>
     
   <section-def-macros>
@@ -241,6 +248,134 @@
         </out>
       </action>
     </rule>
+      
+    <rule comment="RULE: Translate dative nouns">
+      <pattern>
+        <pattern-item n="pr"/>
+        <pattern-item n="noun"/>
+      </pattern>
+      <action>
+        <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="lem"/>
+                  <lit v="to"/>
+                </equal>
+            </test>
+
+            <let>
+              <var n="dative"/>
+              <lit-tag v="dat"/>
+            </let>
+
+        </when>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="lem"/>
+                  <lit v="for"/>
+                </equal>
+            </test>
+
+            <let>
+              <var n="dative"/>
+              <lit-tag v="dat"/>
+            </let>
+
+        </when>         
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="gender"/>
+              <clip pos="2" side="tl" part="number"/>
+              <var n="dative"/>   
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule> 
+      
+    <rule comment="RULE: Translate locative proper nouns">
+      <pattern>
+        <pattern-item n="pr"/>
+        <pattern-item n="np"/>
+      </pattern>
+      <action>
+        <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="lem"/>
+                  <lit v="in"/>
+                </equal>
+            </test>
+            <let>
+              <var n="locative"/>
+              <lit-tag v="loc"/>
+            </let>
+        </when> 
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="gloss"/>
+              <clip pos="2" side="tl" part="gender"/>
+              <clip pos="2" side="tl" part="number"/>
+              <var n="locative"/>   
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Translate present verbs">
+      <pattern>
+        <pattern-item n="vrb"/>
+      </pattern>
+      <action>
+        <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="tense"/>
+                  <lit-tag v="pres"/>
+                </equal>
+            </test>
+            <let>
+              <clip pos="1" side="tl" part="tense"/>
+              <lit-tag v="pri"/>
+            </let>
+        </when> 
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="tense"/>
+              <clip pos="1" side="tl" part="person"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule> 
+
       
 
   </section-rules>

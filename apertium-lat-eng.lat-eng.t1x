@@ -126,7 +126,7 @@
 
   <section-rules>
       
-    <rule comment="RULE: Rearrange word order">
+    <rule comment="RULE: Rearrange word order for noun-adjective-verb sentences">
       <pattern>
         <pattern-item n="noun"/>
         <pattern-item n="adj"/>
@@ -170,6 +170,83 @@
               <clip pos="2" side="tl" part="lem"/>
               <clip pos="2" side="tl" part="word_type"/>
               <lit-tag v="sint"></lit-tag>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Rearrange word order for noun-adjective phrases">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="adj"/>
+      </pattern>
+      <action>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <lit-tag v="sint"></lit-tag>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Rearrange word order for S-O-V sentences">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="noun"/>
+      <pattern-item n="vrb"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="3" side="sl" part="tense"/>
+                  <lit-tag v="pri"/>
+                </equal>
+            </test>
+            <let>
+              <clip pos="3" side="tl" part="tense"/>
+              <lit-tag v="pres"/>
+            </let>
+          </when>
+       </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="3" side="tl" part="lem"/>
+              <clip pos="3" side="tl" part="word_type"/>
+              <clip pos="3" side="tl" part="tense"/>
+              <clip pos="3" side="tl" part="person"/>
+              <clip pos="3" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="number"/>
             </lu>
           </chunk>
         </out>

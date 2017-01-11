@@ -33,6 +33,10 @@
     <def-cat n="det">
       <cat-item tags="det.*"/>
     </def-cat>
+    <def-cat n="pr">
+      <cat-item tags="pr.*"/>
+      <cat-item tags="pr"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -60,6 +64,7 @@
       <attr-item tags="vbser"/>
       <attr-item tags="adv"/>
       <attr-item tags="prn"/>
+      <attr-item tags="pr"/>
       <attr-item tags="det"/>
     </def-attr>
         
@@ -125,6 +130,126 @@
   </section-def-macros>
 
   <section-rules>
+      
+    <rule comment="RULE: Rearrange sentences with prepositional phrases and direct objects">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="noun"/>
+        <pattern-item n="pr"/>
+        <pattern-item n="noun"/>
+        <pattern-item n="vrb"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="5" side="sl" part="tense"/>
+                  <lit-tag v="ifi"/>
+                </equal>
+            </test>
+            <let>
+                  <clip pos="5" side="tl" part="tense"/>
+                  <lit-tag v="pres"/>
+            </let>
+        </when>         
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="5" side="tl" part="lem"/>
+              <clip pos="5" side="tl" part="word_type"/>
+              <clip pos="5" side="tl" part="tense"/>
+              <clip pos="5" side="tl" part="person"/>
+              <clip pos="5" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="3" side="tl" part="lem"/>
+              <clip pos="3" side="tl" part="word_type"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="4" side="tl" part="lem"/>
+              <clip pos="4" side="tl" part="word_type"/>
+              <clip pos="4" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Rearrange sentences with direct and indirect objects">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="noun"/>
+        <pattern-item n="vrb"/>
+        <pattern-item n="noun"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="3" side="sl" part="tense"/>
+                  <lit-tag v="pri"/>
+                </equal>
+            </test>
+            <let>
+                  <clip pos="3" side="tl" part="tense"/>
+                  <lit-tag v="pres"/>
+            </let>
+        </when>         
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="3" side="tl" part="lem"/>
+              <clip pos="3" side="tl" part="word_type"/>
+              <clip pos="3" side="tl" part="tense"/>
+              <clip pos="3" side="tl" part="person"/>
+              <clip pos="3" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="4" side="tl" part="lem"/>
+              <clip pos="4" side="tl" part="word_type"/>
+              <clip pos="4" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
       
     <rule comment="RULE: Rearrange word order for noun-adjective-verb sentences">
       <pattern>

@@ -24,6 +24,9 @@
     <def-cat n="vbser">
       <cat-item tags="vbser.*"/>
     </def-cat>
+    <def-cat n="vbmod">
+      <cat-item tags="vbmod.*"/>
+    </def-cat>      
     <def-cat n="adv">
       <cat-item tags="adv"/>
       <cat-item tags="adv.*"/>
@@ -33,6 +36,7 @@
     </def-cat>
     <def-cat n="det">
       <cat-item tags="det.*"/>
+      <cat-item tags="det"/>
     </def-cat>
     <def-cat n="pr">
       <cat-item tags="pr.*"/>
@@ -130,7 +134,8 @@
         <def-var n="comparison"/>
         <def-var n="dative"/>      
         <def-var n="locative"/>   
-        <def-var n="gend"/>      
+        <def-var n="gend"/>
+        <def-var n="modifier"/>  
     </section-def-vars>
     
   <section-def-macros>
@@ -301,6 +306,151 @@
       </action>
     </rule> 
 
+    <rule comment="RULE: Translate imperfect verbs">
+      <pattern>
+        <pattern-item n="vbser"/>
+        <pattern-item n="vrb"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="1" side="sl" part="tense"/>
+                  <lit-tag v="past"/>
+                </equal>
+            </test>
+            <let>
+                  <clip pos="2" side="tl" part="tense"/>
+                  <lit-tag v="pii"/>
+            </let>
+        </when>
+      </choose>
+        <out>
+          <chunk name="vrb">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="tense"/>
+              <clip pos="1" side="sl" part="person"/>
+              <clip pos="1" side="sl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Rearrange sentences with direct and indirect objects">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="vrb"/>
+        <pattern-item n="noun"/>
+        <pattern-item n="noun"/>
+      </pattern>
+      <action>
+        <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="2" side="sl" part="tense"/>
+                  <lit-tag v="pres"/>
+                </equal>
+            </test>
+            <let>
+              <clip pos="2" side="tl" part="tense"/>
+              <lit-tag v="pri"/>
+            </let>
+        </when> 
+      </choose>
+        <out>
+          <chunk name="n">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="gender"/>
+              <clip pos="1" side="tl" part="number"/>
+              <lit-tag v="nom"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="4" side="tl" part="lem"/>
+              <clip pos="4" side="tl" part="word_type"/>
+              <clip pos="4" side="tl" part="gender"/>
+              <clip pos="4" side="tl" part="number"/>
+              <lit-tag v="acc"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="2" side="tl" part="lem"/>
+              <clip pos="2" side="tl" part="word_type"/>
+              <clip pos="2" side="tl" part="tense"/>
+              <clip pos="2" side="tl" part="person"/>
+              <clip pos="2" side="tl" part="number"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="3" side="tl" part="lem"/>
+              <clip pos="3" side="tl" part="word_type"/>
+              <clip pos="3" side="tl" part="gender"/>
+              <clip pos="3" side="tl" part="number"/>
+              <lit-tag v="dat"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
+      
+    <rule comment="RULE: Translate noun-vbser-vrb sentences">
+      <pattern>
+        <pattern-item n="noun"/>
+        <pattern-item n="vbser"/>
+        <pattern-item n="vrb"/>
+      </pattern>
+      <action>
+       <choose>
+        <when>
+            <test>
+               <equal>
+                  <clip pos="2" side="sl" part="tense"/>
+                  <lit-tag v="past"/>
+                </equal>
+            </test>
+            <let>
+                  <clip pos="3" side="tl" part="tense"/>
+                  <lit-tag v="pii"/>
+            </let>
+        </when>
+      </choose>
+        <out>
+          <chunk name="vrb">
+            <tags>
+              <tag><lit-tag v="SN"/></tag>
+            </tags>
+            <lu>
+              <clip pos="1" side="tl" part="lem"/>
+              <clip pos="1" side="tl" part="word_type"/>
+              <clip pos="1" side="tl" part="gender"/>
+              <clip pos="1" side="tl" part="number"/>
+              <lit-tag v="nom"/>
+            </lu>
+            <b/>
+            <lu>
+              <clip pos="3" side="tl" part="lem"/>
+              <clip pos="3" side="tl" part="word_type"/>
+              <clip pos="3" side="tl" part="tense"/>
+              <clip pos="2" side="sl" part="person"/>
+              <clip pos="2" side="sl" part="number"/>
+            </lu>
+          </chunk>
+        </out>
+      </action>
+    </rule>
       
     <rule comment="RULE: Translate adverbs">
       <pattern>

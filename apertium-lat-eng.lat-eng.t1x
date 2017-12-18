@@ -92,12 +92,16 @@
       <attr-item tags="cni"/>
       <attr-item tags="plu"/>
       <attr-item tags="pmp"/>
+      <attr-item tags="pms"/>
       <attr-item tags="prs"/>
       <attr-item tags="pis"/>
       <attr-item tags="ifi"/>
       <attr-item tags="aff"/>
       <attr-item tags="itg"/>
-      <attr-item tags="neg"/> 
+      <attr-item tags="neg"/>
+	  <attr-item tags="impf"/>
+	  <attr-item tags="infp"/>
+	  <attr-item tags="pfut"/>
      </def-attr>
       
      <def-attr n="person">
@@ -126,6 +130,7 @@
         <def-var n="vaux2"/>
         <def-var n="pers"/>
         <def-var n="numb"/>
+        <def-var n="prep"/>
     </section-def-vars>
 
   <section-def-macros>
@@ -568,43 +573,7 @@
       </action>
     </rule>
       
-    <rule comment="RULE: Translate 'to be' verbs">
-      <pattern>
-        <pattern-item n="vbser"/>
-      </pattern>
-      <action>
-       <choose>
-        <when>
-            <test>
-               <equal>
-                  <clip pos="1" side="sl" part="tense"/>
-                  <lit-tag v="pri"/>
-                </equal>
-            </test>
-            <let>
-                  <clip pos="1" side="tl" part="tense"/>
-                  <lit-tag v="pres"/>
-            </let>
-        </when>           
-      </choose>
-        <out>
-          <chunk name="n">
-            <tags>
-              <tag><lit-tag v="SN"/></tag>
-            </tags>
-            <lu>
-              <clip pos="1" side="tl" part="lem"/>
-              <clip pos="1" side="tl" part="word_type"/>
-              <clip pos="1" side="tl" part="tense"/>
-              <clip pos="1" side="tl" part="person"/>
-              <clip pos="1" side="tl" part="number"/>
-            </lu>
-          </chunk>
-        </out>
-      </action>
-    </rule>
-      
-    <rule comment="RULE: Conjugate vblex verbs">
+    <rule comment="RULE: Conjugate standard verbs">
      <pattern>
         <pattern-item n="vrb"/>
      </pattern>
@@ -788,6 +757,248 @@
      </out>
      </action>
     </rule>
+	  
+	<rule comment="RULE: Conjugate 'to be' verbs">
+     <pattern>
+        <pattern-item n="vbser"/>
+     </pattern>
+     <action>
+       <choose>
+        <when>
+            <test>
+				<or>   
+					<equal>
+					  <clip pos="1" side="sl" part="tense"/>
+					  <lit-tag v="pri"/>
+					</equal>
+					<equal>
+						<clip pos="1" side="sl" part="tense"/>
+						<lit-tag v="prs"/>
+					</equal>
+					<equal>
+						<clip pos="1" side="sl" part="tense"/>
+						<lit-tag v="imp"/>
+					</equal>					
+				</or>    
+            </test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="pres"/>
+            </let>
+			<let>
+				<var n="pers"/>
+				<concat>
+                <clip pos="1" side="sl" part="person"/>
+				</concat> 	
+            </let>
+			<let>
+				<var n="numb"/>
+				<concat>
+                <clip pos="1" side="sl" part="number"/>
+				</concat> 	
+            </let>
+        </when>           
+        <when>
+            <test>
+				<or>
+					<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="fti"/>
+					</equal>
+					<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="impf"/>
+					</equal>
+				</or>	
+            </test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="inf"/>
+            </let>
+            <let>
+                <var n="vaux"/>
+                <concat>
+                <lit v="will"/>
+                <lit-tag v="vbmod"/>
+                <lit-tag v="inf"/>
+                <lit v="$ "/>
+                </concat>
+            </let>
+        </when>  
+        <when>
+            <test>
+                <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="ftp"/>
+                </equal>
+            </test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="pp"/>
+            </let>
+            <let>
+                <var n="vaux"/>
+                <concat>
+                <lit v="will"/>
+                <lit-tag v="vbmod"/>
+                <lit-tag v="inf"/>
+                <lit v="$ "/>
+                <lit v="have"/>
+                <lit-tag v="vbhaver"/>
+                <lit-tag v="inf"/>
+                <lit v=" ^"/>                    
+                </concat>
+            </let>
+        </when>
+        <when>
+            <test>
+			<or>
+				<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="pmp"/>
+				</equal>
+				<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="pms"/>
+				</equal>
+			</or>  
+            </test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="pp"/>
+            </let>
+            <let>
+                <var n="vaux"/>
+                <concat>
+                <lit v="have"/>
+                <lit-tag v="vbhaver"/>
+                <lit-tag v="past"/>
+                <lit v="$ ^"/>
+                </concat>
+            </let>            
+        </when>
+        <when>
+            <test>
+				<or>
+				<equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="pii"/>
+                </equal>	
+                <equal>
+                <clip pos="1" side="sl" part="tense"/>
+                <lit-tag v="pis"/>
+                </equal>
+				</or>	
+            </test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="ger"/>
+            </let>
+            <let>
+                <var n="vaux"/>
+                <concat>
+                <lit v="be"/>
+                <lit-tag v="vbser"/>
+                <lit-tag v="past"/>
+                <clip pos="1" side="tl" part="person"/>   
+                <clip pos="1" side="tl" part="number"/>   
+                <lit v="$ ^"/>
+                </concat>
+            </let>            
+        </when>
+        <when>
+			<test>
+				<or>
+					<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="ifi"/>
+					</equal>
+					<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="pfs"/>
+					</equal>
+					<equal>
+					<clip pos="1" side="sl" part="tense"/>
+					<lit-tag v="infp"/>
+					</equal>
+				</or>	
+			</test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="pp"/>
+            </let>
+            <let>
+                <var n="vaux"/>
+                <concat>
+                <lit v="have"/>
+                <lit-tag v="vbhaver"/>
+                <lit-tag v="pres"/>
+                <clip pos="1" side="tl" part="person"/>   
+                <clip pos="1" side="tl" part="number"/>   
+                <lit v="$ ^"/>
+                </concat>
+            </let>            
+        </when>
+        <when>
+			<test>
+				<equal>
+				<clip pos="1" side="sl" part="tense"/>
+				<lit-tag v="pfut"/>
+				</equal>
+			</test>
+            <let>
+                <clip pos="1" side="tl" part="tense"/>
+                <lit-tag v="inf"/>
+            </let>
+            <let>
+                <var n="vaux"/>
+                <concat>
+                <lit v="be"/>
+                <lit-tag v="vbser"/>
+                <lit-tag v="pres"/>
+                <lit-tag v="p3"/>  
+				<clip pos="1" side="sl" part="number"/>   	
+                <lit v="$ ^"/>
+                </concat>
+            </let> 
+            <let>
+                <var n="vaux2"/>
+                <concat>
+                <lit v="go"/>
+                <lit-tag v="vblex"/>
+                <lit-tag v="ger"/>
+                <lit v="$ ^"/>
+                </concat>
+            </let>
+            <let>
+                <var n="prep"/>
+                <concat>
+                <lit v="to"/>
+                <lit-tag v="pr"/>
+                <lit v="$ ^"/>
+                </concat>
+            </let> 			
+        </when>   		   
+      </choose>
+     <out>
+       <chunk name="vb">
+       <tags>
+         <tag><lit-tag v="SN"/></tag>
+       </tags>
+       <lu>
+        <var n="vaux"/>
+        <var n="vaux2"/>    
+        <var n="prep"/> <!-- only used with the future participle -->          
+         <clip pos="1" side="tl" part="lem"/>
+         <clip pos="1" side="tl" part="word_type"/>
+         <clip pos="1" side="tl" part="tense"/>
+        <var n="pers"/>           
+        <var n="numb"/>           
+       </lu>
+         </chunk>
+     </out>
+     </action>
+    </rule>  
       
   </section-rules>
 </transfer>

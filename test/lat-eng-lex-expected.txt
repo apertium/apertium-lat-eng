@@ -1,0 +1,10 @@
+[XWHK7t9UxN9w#0] ^ire<vblex><pri><p1><sg>/go<vblex><pri><p1><sg>$
+[/XWHK7t9UxN9w]
+[ZEDR5qiyLunQ#0] ^theatrum<n><nt><sg><dat>/theatre<n><sg><dat>$
+[/ZEDR5qiyLunQ]
+[akcO0fxJnJHq#0] ^clare<adv><sint><sup>/clearly<adv><sint><sup>$
+[/akcO0fxJnJHq]
+[axMnaz9rXRFU#0] ^Brutus<np><ant><m><pl><dat>/Brutus<np><ant><m><pl><dat>$
+[/axMnaz9rXRFU]
+[qvSjocDIFjj7#0] ^hic<det><dem><m><sg><dat>/this<det><dem><m><sg><dat>$
+[/qvSjocDIFjj7]

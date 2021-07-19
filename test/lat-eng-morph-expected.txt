@@ -1,0 +1,10 @@
+[XWHK7t9UxN9w#0] ^eo/ire<vblex><pri><p1><sg>$
+[/XWHK7t9UxN9w]
+[ZEDR5qiyLunQ#0] ^theatro/theatrum<n><nt><sg><dat>/theatrum<n><nt><sg><abl>/theatrum<n><nt><sg><loc>$
+[/ZEDR5qiyLunQ]
+[akcO0fxJnJHq#0] ^clarissime/clare<adv><sint><sup>$
+[/akcO0fxJnJHq]
+[axMnaz9rXRFU#0] ^Brutis/Brutus<np><ant><m><pl><dat>/Brutus<np><ant><m><pl><abl>/Brutus<np><ant><m><pl><loc>$
+[/axMnaz9rXRFU]
+[qvSjocDIFjj7#0] ^huic/hic<det><dem><m><sg><dat>/hic<det><dem><f><sg><dat>/hic<det><dem><nt><sg><dat>$
+[/qvSjocDIFjj7]

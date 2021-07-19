@@ -1,0 +1,16 @@
+[0NIgGRhlgsao#0] ^default<default>{^Roma<np><top><f><sg>$}$
+[/0NIgGRhlgsao]
+[7cANTbgN3D6R#0] ^n<SN>{^esse<vbser><pri><p3><sg>$}$
+[/7cANTbgN3D6R]
+[AiDxhDHTYn_3#0] ^n<SN>{^obscenitas<n><f><pl>$}$
+[/AiDxhDHTYn_3]
+[GHiXzgr88gtQ#0] ^default<default>{^magis<det><qnt><sp>$}$
+[/GHiXzgr88gtQ]
+[LmZZqjU5swAQ#0] ^n<SN>{^esse<vbser><pri><p3><sg>$}$
+[/LmZZqjU5swAQ]
+[QPYyNBZslCJk#0] ^n<SN>{^mediocritas<n><f><pl>$}$
+[/QPYyNBZslCJk]
+[VIIYzDtYUE6s#0] ^n<SN>{^esse<vbser><pri><p3><sg>$}$
+[/VIIYzDtYUE6s]
+[dpLDrTVAu4A8#0] ^default<default>{^unus<num><sg>$}$
+[/dpLDrTVAu4A8]

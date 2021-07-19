@@ -1,0 +1,16 @@
+[0NIgGRhlgsao#0] ^Roma<np><top><f><sg>$
+[/0NIgGRhlgsao]
+[7cANTbgN3D6R#0] ^esse<vbser><pri><p3><sg>$
+[/7cANTbgN3D6R]
+[AiDxhDHTYn_3#0] ^obscenitas<n><f><pl>$
+[/AiDxhDHTYn_3]
+[GHiXzgr88gtQ#0] ^magis<det><qnt><sp>$
+[/GHiXzgr88gtQ]
+[LmZZqjU5swAQ#0] ^esse<vbser><pri><p3><sg>$
+[/LmZZqjU5swAQ]
+[QPYyNBZslCJk#0] ^mediocritas<n><f><pl>$
+[/QPYyNBZslCJk]
+[VIIYzDtYUE6s#0] ^esse<vbser><pri><p3><sg>$
+[/VIIYzDtYUE6s]
+[dpLDrTVAu4A8#0] ^unus<num><sg>$
+[/dpLDrTVAu4A8]

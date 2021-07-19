@@ -1,0 +1,10 @@
+{
+    "eng-lat": {
+        "input": "eng-lat-input.txt",
+        "mode": "eng-lat"
+    },
+    "lat-eng": {
+        "input": "lat-eng-input.txt",
+        "mode": "lat-eng"
+    }
+}

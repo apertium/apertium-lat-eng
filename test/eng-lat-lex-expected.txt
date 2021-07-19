@@ -1,0 +1,16 @@
+[0NIgGRhlgsao#0] ^Rome<np><top><sg>/Roma<np><top><f><sg>$
+[/0NIgGRhlgsao]
+[7cANTbgN3D6R#0] ^be<vbser><pres><p3><sg>/esse<vbser><pres><p3><sg>$
+[/7cANTbgN3D6R]
+[AiDxhDHTYn_3#0] ^obscenity<n><pl>/obscenitas<n><f><pl>$
+[/AiDxhDHTYn_3]
+[GHiXzgr88gtQ#0] ^more<det><qnt><sp>/magis<det><qnt><sp>$
+[/GHiXzgr88gtQ]
+[LmZZqjU5swAQ#0] ^be<vbser><pres><p3><sg>/esse<vbser><pres><p3><sg>$
+[/LmZZqjU5swAQ]
+[QPYyNBZslCJk#0] ^mediocrity<n><pl>/mediocritas<n><f><pl>$
+[/QPYyNBZslCJk]
+[VIIYzDtYUE6s#0] ^be<vbser><pres><p3><sg>/esse<vbser><pres><p3><sg>$
+[/VIIYzDtYUE6s]
+[dpLDrTVAu4A8#0] ^one<num><sg>/unus<num><sg>$
+[/dpLDrTVAu4A8]
